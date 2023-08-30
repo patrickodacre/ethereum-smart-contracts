@@ -162,9 +162,9 @@ contract Token is IERC721 {
 
         // if to is a contract
         if (to.code.length > 0) {
-            bytes4 data = IERC721Receiver(to).onERC721Received(msg.sender, from, id, data);
+            bytes4 _data = IERC721Receiver(to).onERC721Received(msg.sender, from, id, data);
 
-            if (IERC721Receiver.onERC721Received.selector != data) {
+            if (IERC721Receiver.onERC721Received.selector != _data) {
                 revert NotERC721Receiver(to);
             }
         }
